@@ -23,15 +23,16 @@ export default async function Home() {
   const data = await getData();
 
   return (
-    <main className="container mx-auto max-w-xl pt-8 min-h-screen">
+    <main className="container mx-auto pt-8 min-h-screen">
       <h1 className="text-4xl font-bold mb-8 text-center">NEXTJS</h1>
-      <ul>
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((pokemon, index) => (
           <li key={index}>
-            <Link href={`/pokemon/${pokemon.id}`} className="border p-4 border-gray my-2 hover:shadow-md capitalize flex items-center text-lg bg-gray-200 rounded-md">
-              <img src={pokemon.image} alt={pokemon.name} className="w-20 h-20 mr-4" />
-              <span className="mr-2 font-bold">{pokemon.id}</span>
-              {pokemon.name}
+            <Link href={`/pokemon/${pokemon.id}`} className="flex flex-col justify-center items-center max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <img src={pokemon.image} alt={pokemon.name} className="rounded-t-lg" />
+              <div className="p-5">
+                <h5 className=" capitalize mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{pokemon.name}</h5>
+              </div>
             </Link>
           </li>
         ))}
